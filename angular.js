@@ -16704,7 +16704,11 @@ function $RootScopeProvider() {
                                && isNaN(value) && isNaN(last)))) {
                       dirty = true;
                       lastDirtyWatch = watch;
-                      watch.last = watch.eq ? copy(value, null) : value;
+                      if (!value) {
+                        watch.last = watch.eq ? copy(value, null) : value;
+                      } else {
+                        watch.last = watch.eq ? JSON.parse(JSON.stringify(value)) : value;
+                      }
                       fn = watch.fn;
                       fn(value, ((last === initWatchVal) ? value : last), current);
                       if (ttl < 5) {
