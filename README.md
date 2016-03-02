@@ -1,3 +1,13 @@
+## Why this fork?
+
+We are working in a project that uses REST services that return huge geojson objects. When AngularJs have to deals with those responses, it take so long to $digets them because the function angular.copy make a copy considering specials cases and another stuff internals to AngularJs.
+
+The problem matters only in one case of use and, replacing the way making the object copy for something more native in Javascript ( JSON.parse(JSON.stringify(value)) ), we can reduce the time of the $digets from 6 seconds to 300ms.
+
+The improvement is amazing, and that is the reason of this repo :)
+
+==========
+
 # packaged angular
 
 This repo is for distribution on `npm` and `bower`. The source for this module is in the
