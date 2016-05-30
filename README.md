@@ -6,6 +6,40 @@ The problem matters only in one case of use and, replacing the way making the ob
 
 The improvement is amazing, and that is the reason of this repo :)
 
+## How update this repo?
+
+Be sure you add the original repo into the git configuration:
+
+```shell
+git remote add -f --tags angular-origin git@github.com:angular/bower-angular.git
+
+```
+
+Then, follow the next commands:
+```shell
+git checkout develop
+git merge angular-origin/master
+```
+
+If everything is ok, you must have two conflicts:
+```shell
+# Unmerged paths:
+#   (use "git add <file>..." to mark resolution)
+#
+#	both modified:   bower.json
+#	both modified:   package.json
+```
+
+Fix the version in those files and then:
+```shell
+git commit
+git flow release start <version>
+git flow release finish <version>
+git push origin develop
+git push origin master
+git push origin master --tags
+```
+
 ==========
 
 # packaged angular
